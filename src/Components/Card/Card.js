@@ -1,43 +1,71 @@
-import React from 'react'
-import styled from 'styled-components'
-import testIcon from '../Image/icon-sedans.svg'
+import React from "react";
+import styled from "styled-components";
 
-const Card = () => {
+const Card = (props) => {
   return (
-    <Conatiner>
-        <Wrapper>
-            <IconCtrl>
-                <Icon src={testIcon} alt='Icon' />
-            </IconCtrl>
-            <Title>Sedans</Title>
-            <Content> Choose a sedan for its affordability and excellent fuel economy. Ideal for cruising in the city or on your next road trip. </Content>
-            <Button>Learn More</Button>
-        </Wrapper>
+    <Conatiner bgColor={props.bgColor} rediusPop={props.rediusPop}>
+      <Wrapper>
+        <IconCtrl>
+          <Icon src={props.iconImg} alt="Icon" />
+        </IconCtrl>
+        <Title> {props.cardTitle} </Title>
+        <Content>{props.cardContent}</Content>
+        <Button onClick={props.clickFunction} btnColor={props.btnColor}>
+          {" "}
+          Learn More{" "}
+        </Button>
+      </Wrapper>
     </Conatiner>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
 
 const Conatiner = styled.div`
-height: 400px;
-width: 260px;
-background-color: darkcyan;
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 20px;
-font-family: quicksand;
-`
+  height: 400px;
+  width: 260px;
+  background-color: ${({ bgColor }) => bgColor};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: quicksand;
+  border-radius: ${({ rediusPop }) => rediusPop};
+`;
 const Wrapper = styled.div`
-height: 85%;
-width: 80%;
-background-color: aqua;
-`
+  height: 85%;
+  width: 80%;
+`;
 const IconCtrl = styled.div`
-margin-bottom: 30px;
-`
-const Icon = styled.img``
-const Title = styled.div``
-const Content = styled.div``
-const Button = styled.div``
+  margin-bottom: 30px;
+`;
+const Icon = styled.img`
+  width: 45px;
+`;
+const Title = styled.div`
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+`;
+const Content = styled.div`
+  font-size: 14px;
+  width: 90%;
+  margin-bottom: 50px;
+  color: #fff;
+  line-height: 1.6;
+`;
+const Button = styled.button`
+  padding: 10px 25px;
+  background-color: #fff;
+  font-family: quicksand;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: none;
+  color: ${({ btnColor }) => btnColor};
+  cursor: pointer;
+`;
